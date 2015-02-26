@@ -29,9 +29,8 @@ case `uname` in
 	echo Unsupported platform: `uname`
 	exit -1
 esac
-
-GITREPO=${GITREPO:-"git://github.com/mozilla-b2g/b2g-manifest"}
-BRANCH=${BRANCH:-master}
+GITREPO=${GITREPO:-"git://github.com/viralwang/b2g-manifest"}
+BRANCH=${BRANCH:-flame-l}
 
 while [ $# -ge 1 ]; do
 	case $1 in
@@ -125,7 +124,7 @@ case "$1" in
 	repo_sync $1
 	;;
 
-"flame"|"flame-kk")
+"flame"|"flame-kk"|"flame-l")
 	echo PRODUCT_NAME=flame >> .tmp-config &&
 	repo_sync $1
 	;;
@@ -204,6 +203,11 @@ case "$1" in
 	echo PRODUCT_NAME=aries >> .tmp-config &&
 	repo_sync shinano
 	;;
+
+"openL")
+        echo PRODUCT_NAME=openL >> .tmp-config &&
+        repo_sync $1
+        ;;
 
 *)
 	echo "Usage: $0 [-cdflnq] (device name)"
